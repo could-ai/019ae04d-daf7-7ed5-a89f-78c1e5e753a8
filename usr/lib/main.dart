@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'تطبيق التسويق',
+      title: 'مدرسة زهرة المدائن',
       debugShowCheckedModeBanner: false,
       // Support for Arabic RTL
       localizationsDelegates: const [

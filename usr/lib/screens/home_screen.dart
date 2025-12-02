@@ -9,13 +9,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('المتجر الإلكتروني'),
+        title: const Text('مدرسة زهرة المدائن'),
         centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {
-              // Future: Navigate to cart
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('سلة المشتريات فارغة حالياً')),
               );
@@ -23,16 +22,41 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(10.0),
-        itemCount: dummyProducts.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 4,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-        ),
-        itemBuilder: (ctx, i) => ProductItem(product: dummyProducts[i]),
+      body: Column(
+        children: [
+          // Credits Section
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12.0),
+            color: Theme.of(context).colorScheme.primaryContainer,
+            child: const Column(
+              children: [
+                Text(
+                  'المصمم: زناتي عبدالسلام العبدلي',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'تحت إشراف المديرة: سليمه',
+                  style: TextStyle(fontSize: 12),
+                ),
+              ],
+            ),
+          ),
+          // Product Grid
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.all(10.0),
+              itemCount: dummyProducts.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 3 / 4,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemBuilder: (ctx, i) => ProductItem(product: dummyProducts[i]),
+            ),
+          ),
+        ],
       ),
     );
   }
